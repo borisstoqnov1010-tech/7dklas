@@ -259,32 +259,38 @@
         </div>
 
     </footer>
+
 <script>
-const elements = document.querySelectorAll(
-    '.section-label, .section-title, .glass, .stat-card, .student-card, .students-footer, .footer'
-);
+document.addEventListener("DOMContentLoaded", () => {
 
-elements.forEach((element, index) => {
-    element.classList.add('reveal');
+    const elements = document.querySelectorAll(
+        ".section-label, .section-title, .glass, .stat-card, .student-card, .students-footer, .footer"
+    );
 
-    if (element.classList.contains('student-card')) {
-        element.style.transitionDelay =
-            `${(index % 4) * 100}ms`;
-    }
-});
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
+    elements.forEach(element => {
+        element.classList.add("reveal");
     });
-}, {
-    threshold: 0.15
-});
 
-elements.forEach(element => observer.observe(element));
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+
+    }, {
+        threshold: 0.08,
+        rootMargin: "0px 0px -40px 0px"
+    });
+
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+
+});
 </script>
+
 </body>
 </html>
