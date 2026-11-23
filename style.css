@@ -815,3 +815,116 @@ a {
         transition: none;
     }
 }
+
+/* =================================
+   PREMIUM SCROLL ANIMATIONS
+================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(55px);
+    filter: blur(4px);
+    transition:
+        opacity 0.9s cubic-bezier(.2,.8,.2,1),
+        transform 0.9s cubic-bezier(.2,.8,.2,1),
+        filter 0.9s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* =================================
+   MOUSE HOVER EFFECTS
+================================= */
+
+.student-card,
+.stat-card,
+.glass,
+.main-card,
+.floating-card,
+.nav-button,
+.primary-button,
+.secondary-button,
+.icon-box {
+    transition:
+        transform 0.35s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+}
+
+.student-card:hover {
+    transform: translateY(-10px) scale(1.025);
+    box-shadow: 0 20px 45px #0007;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.025);
+}
+
+.glass:hover {
+    transform: translateY(-8px) scale(1.01);
+}
+
+.main-card:hover {
+    transform: rotate(0deg) scale(1.04);
+}
+
+.floating-card:hover {
+    transform: translateY(-7px) scale(1.05);
+}
+
+.nav-button:hover,
+.primary-button:hover,
+.secondary-button:hover {
+    transform: translateY(-4px) scale(1.04);
+}
+
+.icon-box:hover {
+    transform: rotate(-8deg) scale(1.12);
+}
+
+/* GREEN IVELIN HOVER */
+
+.student-card.ivelin:hover {
+    border-color: #42e88b;
+    box-shadow: 0 20px 45px #24d87533;
+}
+
+/* SMOOTH BUTTONS */
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* MOBILE */
+
+@media (hover: none) {
+    .student-card:hover,
+    .stat-card:hover,
+    .glass:hover {
+        transform: none;
+    }
+}
